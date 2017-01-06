@@ -3,7 +3,6 @@ class AdminUser < ApplicationRecord
 	has_secure_password
 	
 	has_and_belongs_to_many :pages
-	
 	has_many :section_edits
 	has_many :sections, :through => :section_edits
 
@@ -32,6 +31,14 @@ class AdminUser < ApplicationRecord
 	# Custom validations
 	validate :username_is_allowed
 	validate :no_new_users_on_wednesday, :on => :create
+	
+	scope :sorted, lambda { order('last_name ASC, first_name ASC')}
+	
+	def name
+		"#{first_name} #{last_name}"
+		# Or: first_name + ' ' + last_name
+		# Or: [first_name, last_name].join(' ')
+	end
 	
 	private
 	
