@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  
+  root :to => 'public#index'
+  get 'show/:permalink', :to => 'public#show'
+
   # get 'admin_users/index'
 # 
   # get 'admin_users/new'
@@ -8,7 +12,7 @@ Rails.application.routes.draw do
 # 
   # get 'admin_users/delete'
 
-  root 'demo#index'
+
   
   get 'admin', :to => 'access#menu'
   get 'access/menu'
