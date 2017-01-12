@@ -1,7 +1,7 @@
 <div>
   <h2>Show Section</h2>
 
-  <%= link_to("Back to list", sections_path, :class => 'back-link') %>
+  <%= link_to("Back to list", sections_path(:page_id => @page.id), :class => 'back-link') %>
 
   <table>
     <tr>

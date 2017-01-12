@@ -1,7 +1,8 @@
 <div>
   <h2>Sections</h2>
 
-  <%= link_to("Add new section", new_section_path, :class => 'action_new') %>
+  <%= link_to("<< Back to Pages", pages_path(:subject_id => @page.subject_id), :class => 'back-link') %>
+  <%= link_to("Add new section", new_section_path(:page_id => @page.id), :class => 'action_new') %>
 
   <table>
     <tr>
@@ -19,9 +20,9 @@
           <td><%= status_tag(section.visible) %></td>
           <td>0</td>
           <td>
-            <%= link_to("Show", section_path(section), :class => 'action show') %>
-            <%= link_to("Edit", edit_section_path(section), :class => 'action edit') %>
-            <%= link_to("Delete", delete_section_path(section), :class => 'action delete') %>
+            <%= link_to("Show", section_path(section, :page_id => @page.id), :class => 'action show') %>
+            <%= link_to("Edit", edit_section_path(section, :page_id => @page.id), :class => 'action edit') %>
+            <%= link_to("Delete", delete_section_path(section, :page_id => @page.id), :class => 'action delete') %>
           </td>
         </tr>
     <% end %>
