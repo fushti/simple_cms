@@ -1,7 +1,9 @@
 <div>
-  <h2>Pages</h2>
+  <h2><% @page_title = "All Pages "%></h2>
+  
+  <%= link_to("<< Back to Subjects", subjects_path, :class => 'back-link') %><br>
 
-  <%= link_to("Add new page", new_page_path, :class => 'action_new') %>
+  <%= link_to("Add new page", new_page_path(:subject_id => @subject.id), :class => 'action_new') %>
 
   <table>
     <tr>
@@ -22,9 +24,10 @@
           <td><%= status_tag(page.visible) %></td>
           <td>0</td>
           <td>
-            <%= link_to("Show", page_path(page), :class => 'action show') %>
-            <%= link_to("Edit", edit_page_path(page), :class => 'action edit') %>
-            <%= link_to("Delete", delete_page_path(page), :class => 'action delete') %>
+            <%= link_to("View Sections", sections_path(:page_id => page.id), :class => 'action show') %>
+            <%= link_to("Show", page_path(page, :subject_id => @subject.id), :class => 'action show') %>
+            <%= link_to("Edit", edit_page_path(page, :subject_id => @subject.id), :class => 'action edit') %>
+            <%= link_to("Delete", delete_page_path(page, :subject_id => @subject.id), :class => 'action delete') %>
           </td>
         </tr>
     <% end %>
